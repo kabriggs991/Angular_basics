@@ -1,13 +1,32 @@
 <!DOCTYPE html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="demoApp">
 <head>
     <meta charset="UTF-8">
     <title></title>
 </head>
 <body>
-<div class="container">
-    Name:<input type="text" ng-model="name" />{{ name }}
+<div class="container" ng-controller="SimpleController">
+
+    Name:<input type="text" ng-model="name">{{ name }}
+    <ul>
+       <li ng-repeat="cust in customers">{{ cust.name }} - {{ cust.city}}</li>
+    </ul>
+
+
+
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
+
+<script>
+    var demoApp = angular.module('demoApp', []);
+    demoApp.controller('SimpleController', function ($scope) {
+        $scope.customers = [
+            { name: 'John Smith', city: 'Charleston'},
+            { name: 'Ray Man', city: 'Albuquerque'},
+            { name: 'George Jones', city: 'Nashville'},
+            { name: 'Artumus Smith', city: 'Augusta'}
+        ]
+    });
+</script>
 </body>
 </html>
